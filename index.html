@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARA Greenfield Limited - Premium Agricultural Trade</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #1a1033;
+            --primary-purple: #2d1b4e;
+            --accent-gold: #d4af37;
+            --accent-light-gold: #e8d4a8;
+            --forest-green: #2d5016;
+            --emerald: #3d6b2f;
+            --dark-text: #0a0a0a;
+            --light-text: #ffffff;
+            --border-light: #3a2d52;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Georgia', 'Garamond', serif;
+            color: var(--dark-text);
+            background: linear-gradient(135deg, var(--primary-dark) 0%, #1f142d 100%);
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(61, 107, 47, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* =============== NAVIGATION =============== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 16, 51, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            box-shadow: 0 8px 32px rgba(212, 175, 55, 0.15);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.4));
+            }
+            50% {
+                filter: drop-shadow(0 0 16px rgba(212, 175, 55, 0.6));
+            }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--light-text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-light-gold));
+            transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .nav-links a:hover::before {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-light-gold));
+            color: var(--primary-dark);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: none;
+            cursor: pointer;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: left 0.5s ease;
+            z-index: 0;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* =============== HERO SECTION =============== */
+        .hero {
+            margin-top: 80px;
+            min-height: 95vh;
+            background: linear-gradient(135deg, #1a1033 0%, #2d1b4e 50%, #1f142d 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+            filter: blur(40px);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            right: -5%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(61, 107, 47, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 25s ease-in-out infinite reverse;
+            filter: blur(40px);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(50px);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 5.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+            line-height: 1;
+            animation: fadeInDown 1s ease-out;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero .tagline {
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            letter-spacing: 1px;
+            animation: fadeInUp 1.2s ease-out;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+            animation: fadeIn 1.4s ease-out;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-light-gold));
+            color: var(--primary-dark);
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.5), transparent);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+
+        .btn-primary:hover::before {
+            top: -50%;
+            left: -50%;
+            opacity: 1;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent-gold);
+            padding: 1.2rem 3rem;
+            border: 2px solid var(--accent-gold);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .btn-secondary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent-gold);
+            z-index: -1;
+            transition: left 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border-radius: 50px;
+        }
+
+        .btn-secondary:hover {
+            color: var(--primary-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-secondary:hover::before {
+            left: 0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* =============== SECTIONS =============== */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0;
+            animation: slideInSection 0.8s ease-out forwards;
+        }
+
+        @keyframes slideInSection {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: var(--accent-light-gold);
+            text-align: center;
+            margin-bottom: 3rem;
+            font-weight: 400;
+            opacity: 0;
+            animation: slideInSection 0.8s ease-out 0.2s forwards;
+            letter-spacing: 1px;
+        }
+
+        /* =============== ABOUT SECTION =============== */
+        .about {
+            background: linear-gradient(135deg, rgba(45, 27, 78, 0.8), rgba(45, 80, 22, 0.3));
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--accent-gold), var(--emerald));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            animation: slideInLeft 0.8s ease-out 0.3s forwards;
+            opacity: 0;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .about-text p {
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+            animation: slideInLeft 0.8s ease-out 0.4s forwards;
+            opacity: 0;
+            font-size: 1.05rem;
+        }
+
+        .mission-pillars {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            animation: slideInRight 0.8s ease-out 0.3s forwards;
+            opacity: 0;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .pillar {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(61, 107, 47, 0.1));
+            padding: 2.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .pillar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-light-gold), transparent);
+        }
+
+        .pillar:hover {
+            transform: translateY(-15px);
+            border-color: rgba(212, 175, 55, 0.5);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(61, 107, 47, 0.2));
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2), inset 0 1px 0 rgba(212, 175, 55, 0.3);
+        }
+
+        .pillar h4 {
+            font-size: 1.4rem;
+            background: linear-gradient(135deg, var(--accent-gold), var(--emerald));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .pillar p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .mission-pillars {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+
+        /* =============== OVERVIEW SECTION =============== */
+        .overview {
+            background: transparent;
+        }
+
+        .overview-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .overview-text p {
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+            font-size: 1.05rem;
+            animation: slideInLeft 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .overview-text p:nth-child(1) {
+            animation-delay: 0.3s;
+        }
+
+        .overview-text p:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .overview-text p:nth-child(3) {
+            animation-delay: 0.5s;
+        }
+
+        .overview-image {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(61, 107, 47, 0.15));
+            border-radius: 20px;
+            min-height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+            font-size: 1.3rem;
+            text-align: center;
+            padding: 3rem;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            animation: scaleIn 0.8s ease-out 0.3s forwards;
+            opacity: 0;
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .overview-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.2), transparent);
+            border-radius: 50%;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.3;
+            }
+        }
+
+        .overview-image:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+            transform: translateY(-10px);
+        }
+
+        /* =============== LEADERSHIP SECTION =============== */
+        .leadership {
+            background: linear-gradient(135deg, rgba(45, 27, 78, 0.5), rgba(45, 80, 22, 0.2));
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .team-card {
+            background: linear-gradient(135deg, rgba(45, 27, 78, 0.8), rgba(45, 80, 22, 0.4));
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .team-card:nth-child(1) {
+            animation-delay: 0.3s;
+        }
+
+        .team-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .team-card:nth-child(3) {
+            animation-delay: 0.5s;
+        }
+
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .team-card:hover::before {
+            opacity: 1;
+        }
+
+        .team-card:hover {
+            transform: translateY(-20px);
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 30px 60px rgba(212, 175, 55, 0.25);
+        }
+
+        .team-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(61, 107, 47, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-image::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+        }
+
+        .team-info {
+            padding: 2.5rem;
+            position: relative;
+            z-index: 3;
+        }
+
+        .team-info h4 {
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .team-role {
+            color: var(--emerald);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .team-info p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* =============== SERVICES SECTION =============== */
+        .services {
+            background: transparent;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+            align-items: stretch;
+        }
+
+        .services-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .service-item {
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(61, 107, 47, 0.08));
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        .service-item:nth-child(1) {
+            animation-delay: 0.3s;
+        }
+
+        .service-item:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .service-item:nth-child(3) {
+            animation-delay: 0.5s;
+        }
+
+        .service-item:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+
+        .service-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0.2), transparent);
+            transition: width 0.6s ease;
+        }
+
+        .service-item:hover::before {
+            width: 100%;
+        }
+
+        .service-item:hover {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(61, 107, 47, 0.15));
+            transform: translateX(10px);
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
+        }
+
+        .service-item h4 {
+            color: var(--accent-gold);
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .service-item p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .services-image {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(61, 107, 47, 0.15));
+            border-radius: 20px;
+            min-height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 3rem;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            animation: scaleIn 0.8s ease-out 0.3s forwards;
+            opacity: 0;
+        }
+
+        .services-image:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+            transform: translateY(-10px);
+        }
+
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .overview-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* =============== CONTACT SECTION =============== */
+        .contact {
+            background: linear-gradient(135deg, #1a1033 0%, #2d1b4e 50%, #1f142d 100%);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact .section-title {
+            color: var(--accent-gold);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .contact-item {
+            padding: 2.5rem;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(61, 107, 47, 0.1));
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            animation: slideInUp 0.8s ease-out forwards;
+        }
+
+        .contact-item:nth-child(1) {
+            animation-delay: 0.3s;
+        }
+
+        .contact-item:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .contact-item:nth-child(3) {
+            animation-delay: 0.5s;
+        }
+
+        .contact-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.2), transparent);
+            border-radius: 50%;
+            transition: all 0.6s ease;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .contact-item:hover {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(61, 107, 47, 0.2));
+            transform: translateY(-10px);
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+        }
+
+        .contact-item:hover::before {
+            top: -20%;
+            right: -20%;
+        }
+
+        .contact-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            position: relative;
+            z-index: 2;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-item p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            opacity: 0.95;
+            color: rgba(255, 255, 255, 0.85);
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-item a {
+            color: var(--accent-light-gold);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .contact-item a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+
+        .contact-item a:hover::after {
+            width: 100%;
+        }
+
+        /* =============== FOOTER =============== */
+        footer {
+            background: linear-gradient(135deg, #0a0608 0%, #1a1033 100%);
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+            animation: fadeIn 1s ease-out;
+            font-size: 1rem;
+        }
+
+        footer p:first-child {
+            font-size: 1.1rem;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-light-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+
+        /* =============== SCROLL INDICATOR =============== */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .mouse {
+            width: 30px;
+            height: 50px;
+            border: 2px solid var(--accent-gold);
+            border-radius: 15px;
+            position: relative;
+            animation: bounce 2s infinite;
+        }
+
+        .mouse::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            height: 10px;
+            background: var(--accent-gold);
+            border-radius: 2px;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: scroll 1.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        @keyframes scroll {
+            0% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 3rem 1.5rem;
+            }
+            .section-title {
+                font-size: 2.2rem;
+            }
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">✦ ARA Greenfield ✦</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#overview">Company</a></li>
+                <li><a href="#leadership">Team</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#contact" class="cta-button">Get In Touch</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>ARA GREENFIELD</h1>
+            <p class="tagline">Exploring Opportunities in Global Agricultural Markets</p>
+            <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 2rem; color: rgba(255, 255, 255, 0.85);">Premium Commodity Trading & Agricultural Excellence</p>
+            <div class="hero-buttons">
+                <a href="#about" class="btn-primary">Discover More</a>
+                <a href="#contact" class="btn-secondary">Contact Us</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2 class="section-title">About Us</h2>
+        <p class="section-subtitle">Global Expertise in Commodity Trading & Agricultural Consulting</p>
+        
+        <div class="about-grid">
+            <div class="about-text">
+                <h3>Our Legacy</h3>
+                <p>ARA GREENFIELD LIMITED is a premier global merchant specializing in commodity exports, trading, and agricultural consulting with an unparalleled global presence. Our expertise encompasses a sophisticated portfolio of commodities including rice, corn, sesame, barley, sorghum, oats, cocoa, beans, wheat, soybeans, and precious metals.</p>
+                <p>We ensure a reliable supply of premium-quality products for both domestic and international buyers through our accomplished leadership team, proprietary market intelligence tools, and extensive supplier network.</p>
+                <p>Dedicated to advancing the future of global commodity trade while championing sustainable agriculture across emerging markets.</p>
+            </div>
+            
+            <div>
+                <h3 style="font-size: 1.8rem; margin-bottom: 2rem;">Our Mission</h3>
+                <div class="mission-pillars">
+                    <div class="pillar">
+                        <h4>EMPOWER</h4>
+                        <p>Farmers and processors by connecting them to global markets and unprecedented opportunities.</p>
+                    </div>
+                    <div class="pillar">
+                        <h4>STRENGTHEN</h4>
+                        <p>Food security through sustainable sourcing practices and supply chain excellence.</p>
+                    </div>
+                    <div class="pillar">
+                        <h4>DELIVER</h4>
+                        <p>Premium, high-quality commodities meticulously tailored to our partners' unique needs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Overview Section -->
+    <section id="overview" class="overview">
+        <h2 class="section-title">Company Overview</h2>
+        <p class="section-subtitle">Strategic Excellence in Global Trade</p>
+        
+        <div class="overview-content">
+            <div class="overview-text">
+                <h3 style="font-size: 2rem; background: linear-gradient(135deg, var(--accent-gold), var(--emerald)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 1.5rem;">Strategic Excellence</h3>
+                <p>ARA GREENFIELD LIMITED stands as a strategic grain exporter and agricultural consulting firm, powered by the exceptional expertise of Crippen International LLC—our esteemed partner with over three decades of specialized experience in grain and seed processing systems and Impact Grains Limited.</p>
+                <p>Leveraging Crippen International's unrivaled technical expertise, earned through operations spanning over 80 countries, we deliver comprehensive solutions tailored for farmers, millers, and industrial buyers alike.</p>
+                <p>Our integrated strengths ensure efficient grain distribution, innovative processing insights, and globally competitive pricing—all underscored by decades of excellence in post-harvest handling and bulk storage solutions.</p>
+            </div>
+            <div class="overview-image">
+                <div style="position: relative; z-index: 10;">
+                    🌾 Global Network 🌍<br><br>
+                    <span style="font-size: 1rem; color: rgba(255, 255, 255, 0.8);">30+ Years Excellence<br>
+                    80+ Countries Served<br>
+                    Premium Quality Assured</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section id="leadership" class="leadership">
+        <h2 class="section-title">Leadership Team</h2>
+        <p class="section-subtitle">Visionary Leaders Driving Agricultural Excellence</p>
+        
+        <div class="team-grid">
+            <!-- CEO -->
+            <div class="team-card">
+                <div class="team-image">👨‍💼</div>
+                <div class="team-info">
+                    <h4>Alfred George</h4>
+                    <p class="team-role">Chief Executive Officer</p>
+                    <p>Strategic visionary in global commodity trade with 19+ years of experience orchestrating complex international operations, market analysis, and regulatory excellence. His strategic acumen positions ARA GREENFIELD LIMITED at the forefront of the agribusiness industry.</p>
+                </div>
+            </div>
+
+            <!-- Executive Director 1 -->
+            <div class="team-card">
+                <div class="team-image">👨‍🔬</div>
+                <div class="team-info">
+                    <h4>Prof. Adedeji Sijuwade</h4>
+                    <p class="team-role">Executive Director</p>
+                    <p>Distinguished agribusiness professional with 15+ years of expertise in premium herbs and spices cultivation. Pioneer in sustainable agricultural innovation and environmental stewardship through green tree development initiatives.</p>
+                </div>
+            </div>
+
+            <!-- Executive Director 2 -->
+            <div class="team-card">
+                <div class="team-image">👨‍💻</div>
+                <div class="team-info">
+                    <h4>Oyindamola Oyesiji</h4>
+                    <p class="team-role">Executive Director</p>
+                    <p>Dynamic visionary with distinguished expertise in technology, operations, and organizational transformation. Drives strategic digital evolution to revolutionize supply chain efficiency and unlock emerging market opportunities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <h2 class="section-title">Partners & Services</h2>
+        <p class="section-subtitle">A Comprehensive Network of Strategic Partnerships</p>
+        
+        <div class="services-grid">
+            <div class="services-list">
+                <div class="service-item">
+                    <h4>🤝 Suppliers & Producers</h4>
+                    <p>Cultivating enduring relationships with trusted producers, agricultural cooperatives, and commercial partners worldwide to ensure an exceptional and consistent flow of premium-grade grains and agricultural commodities.</p>
+                </div>
+                
+                <div class="service-item">
+                    <h4>🚚 Logistics & Export Infrastructure</h4>
+                    <p>Leveraging strategic alliances with world-class logistics providers, state-of-the-art warehousing facilities, and experienced shipping experts to maintain seamless and efficient global supply chain operations.</p>
+                </div>
+                
+                <div class="service-item">
+                    <h4>⚙️ Processing & Milling Operations</h4>
+                    <p>Collaborating with industry-leading processing facilities to deliver comprehensive value-added services including precision milling, advanced sorting, and customized packaging tailored to client specifications.</p>
+                </div>
+                
+                <div class="service-item">
+                    <h4>📊 Trade & Industry Alliances</h4>
+                    <p>Strategically aligning with commodity traders, food security organizations, and agribusiness consultants focused on market expansion, trade optimization, and sustainable growth initiatives.</p>
+                </div>
+            </div>
+            
+            <div class="services-image">
+                <div style="position: relative; z-index: 10;">
+                    🌾 Supply Chain Excellence 🏭<br><br>
+                    <span style="font-size: 1rem; color: rgba(255, 255, 255, 0.8);">Producers • Farmers<br>
+                    Processing • Distribution<br>
+                    Global Markets • Excellence</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">Connect With Our Team Today</p>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <h4>📍 Office Location</h4>
+                <p>8, Rasheed Alatishe<br>
+                Waterfront Estate<br>
+                Magodo, Lagos State<br>
+                Nigeria</p>
+            </div>
+            
+            <div class="contact-item">
+                <h4>📞 Phone Numbers</h4>
+                <p><a href="tel:+2349135295634">+234 913 529 5634</a><br>
+                <a href="tel:+2348023135457">+234 802 313 5457</a></p>
+            </div>
+            
+            <div class="contact-item">
+                <h4>✉️ Email</h4>
+                <p><a href="mailto:Alfred.George@alphaofinc.com">Alfred.George@alphaofinc.com</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 ARA Greenfield Limited. All Rights Reserved.</p>
+        <p>Exploring Opportunities in Global Agricultural Markets | Premium Commodity Trading Excellence</p>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Parallax scroll effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.backgroundPosition = `0 ${scrolled * 0.5}px`;
+            }
+        });
+
+        // Navbar dynamic background
+        const navbar = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(26, 16, 51, 0.98)';
+                navbar.style.boxShadow = '0 12px 40px rgba(212, 175, 55, 0.2)';
+            } else {
+                navbar.style.background = 'rgba(26, 16, 51, 0.95)';
+                navbar.style.boxShadow = '0 8px 32px rgba(212, 175, 55, 0.15)';
+            }
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.team-card, .contact-item, .service-item, .pillar').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Cursor tracking for mouse glow effect (optional luxury touch)
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+            
+            // Update cursor position for potential glow effects
+            document.documentElement.style.setProperty('--mouse-x', `${x}px`);
+            document.documentElement.style.setProperty('--mouse-y', `${y}px`);
+        });
+
+        // Add shimmer effect on load
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+        });
+    </script>
+</body>
+</html>
